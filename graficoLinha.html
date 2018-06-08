@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+
+        google.charts.load('current', {'packages':['corechart']}); //Usando a versão mais recente (pacote)
+        function desenharLinha() {
+            let tabela = new google.visualization.DataTable();
+            tabela.addColumn('string', 'Mês');
+            tabela.addColumn('number', 'Gastos');
+            tabela.addRows([
+                ['Jan', 800],
+                ['Fev', 400],
+                ['Março', 1100],
+                ['Abril', 400],
+                ['Maio', 500],
+                ['Junho', 750],
+                ['Julho', 1500],
+                ['Agosto', 650],
+                ['Setembro', 850],
+                ['Outubro', 400],
+                ['Novembro', 1000],
+                ['Dezembro', 720]
+            ]);
+            
+            // let opcoes = {
+            //     title:'Tipos de Gastos',
+            //     height: 500,
+            //     widht: 800,
+            //     is3D: true,
+            //     legend:'labeled', //bottom //top /left /right
+            //     pieSliceText: 'value',
+            //     //colors: ['grey','red','yellow','blue','pink','purple']
+            //     slices: {
+            //        // 0:{offset:0.4}, 
+            //         1:{color:'grey'}, 
+            //         2:{color:'#a6a6a6'}
+            //     }
+            // }
+
+            let grafico = new google.visualization.LineChart(document.getElementById('graficoLinha')); 
+            grafico.draw(tabela);
+        }
+        
+        // google.charts.setOnloadCallback(desenharPizza);
+        google.charts.setOnLoadCallback(desenharLinha)
+
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trabalhando com Google Charts</title>
+</head>
+
+<body>
+    <div id="graficoLinha"></div>
+</body>
+
+</html>

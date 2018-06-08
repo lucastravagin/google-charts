@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+
+        google.charts.load('current', {'packages':['corechart']}); //Usando a versão mais recente (pacote)
+        function desenharPizza() {
+            let tabela = new google.visualization.DataTable();
+            tabela.addColumn('string', 'Categorias');
+            tabela.addColumn('number', 'Valores');
+            tabela.addRows([
+                ['Educação', 5000],
+                ['Transporte', 2000],
+                ['Lazer', 1800],
+                ['Saúde', 750],
+                ['Cartão de Crédito', 1100],
+                ['Alimentação', 1040]
+            ]);
+            
+            let opcoes = {
+                title:'Tipos de Gastos',
+                height: 500,
+                widht: 800,
+                is3D: true,
+                legend:'labeled', //bottom //top /left /right
+                pieSliceText: 'value',
+                //colors: ['grey','red','yellow','blue','pink','purple']
+                slices: {
+                   // 0:{offset:0.4}, 
+                    1:{color:'grey'}, 
+                    2:{color:'#a6a6a6'}
+                }
+            }
+
+            let grafico = new google.visualization.PieChart(document.getElementById('graficoPizza')); 
+            grafico.draw(tabela,opcoes);
+        }
+        
+        // google.charts.setOnloadCallback(desenharPizza);
+        google.charts.setOnLoadCallback(desenharPizza)
+
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trabalhando com Google Charts</title>
+</head>
+
+<body>
+    <div id="graficoPizza"></div>
+</body>
+
+</html>
