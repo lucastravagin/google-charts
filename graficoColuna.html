@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gráfico Colunas</title>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'], 'language': 'pt' });
+
+        function desenhaGrafico() {
+            let tabela = google.visualization.arrayToDataTable(
+                [
+                    ['Mês', 'Entrada', 'Saída'],
+                    ['Jan', 2500, 1000],
+                    ['Fev', 2000, 500],
+                    ['Março', 3000, 1300],
+                    ['Abril', 1500, 1700],
+                    ['Maio', 5000, 2250],
+                    ['Junho', 3567, 3000],
+                    ['Julho', 3452, 1468],
+                    ['Agosto', 1833, 5250],
+                    ['Setembro', 3803, 5500],
+                    ['Outubro', 1800, 1000],
+                    ['Novembro', 3569, 1500],
+                    ['Dezembro', 3000, 1740]
+                ]);
+            let opcoes = {
+                title: 'Entradas e Saídas das contas',
+                height: 400,
+                vAxis: {
+                    gridlines: { color: 'transparent' },
+                    format: 'currency',
+                    title: 'Valores'
+                },
+                hAxis: { title: 'Meses' }
+            }
+
+            let grafico = new google.visualization.ColumnChart(document.getElementById('graficoColuna'));
+            grafico.draw(tabela, opcoes);
+        }
+        google.charts.setOnLoadCallback(desenhaGrafico)
+
+    </script>
+</head>
+
+<body>
+    <div id="graficoColuna"></div>
+</body>
+
+</html>
