@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gráfico Colunas</title>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'], 'language': 'pt' });
+
+        function desenhaGrafico() {
+            let tabela = new google.visualization.DataTable();
+            tabela.addColumn('string', 'Categorias');
+            tabela.addColumn('number', 'Valores');
+            tabela.addColumn({type: 'number', role: 'annotation'})
+            tabela.addRows([
+                ['Educação', 5000,5000],
+                ['Transporte', 2000,2000],
+                ['Lazer', 1800,1800],
+                ['Saúde', 750,750],
+                ['Cartão de Crédito', 1100,1100],
+                ['Alimentação', 1040,1040],
+            ]);
+
+            let opcoes = {
+                title: 'Tipos de Gastos',
+                height: 500,
+                vAxis: {gridlines: {count: 0, color:'transparent'}},
+                legend: 'none'
+            }
+            let grafico = new google.visualization.ColumnChart(document.getElementById('graficoColuna2'));
+            grafico.draw(tabela, opcoes);
+        }
+        google.charts.setOnLoadCallback(desenhaGrafico)
+
+    </script>
+</head>
+
+<body>
+    <div id="graficoColuna2"></div>
+</body>
+
+</html>
