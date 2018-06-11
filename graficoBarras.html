@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gráfico Colunas</title>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'], 'language': 'pt' });
+
+        function desenhaGrafico() {
+            let tabela = new google.visualization.DataTable();
+            tabela.addColumn('string', 'Categorias');
+            tabela.addColumn('number', 'Valores');
+            tabela.addColumn({type: 'string', role: 'annotation'})
+            tabela.addRows([
+                ['Educação', 5000,'R$500,00'],
+                ['Transporte', 2000,'R$2000,00'],
+                ['Lazer', 1800,'R$1800,00'],
+                ['Saúde', 750,'R$750,00'],
+                ['Cartão de Crédito', 1100,'R$1100,00'],
+                ['Alimentação', 1040,'R$1040,00'],
+            ]);
+            
+            tabela.sort([{column: 1, desc:true}]);
+
+            let opcoes = {
+                title: 'Tipos de Gastos',
+                height: 500,
+                vAxis: {gridlines: {count: 0, color:'transparent'}},
+                legend: 'none',
+                hAxis: {gridlines:{color:'transparent'}, format:'currency', textPosition:'none'},
+                annotations: {alwaysOutside: true}
+            }
+            let grafico = new google.visualization.BarChart(document.getElementById('graficoBarras'));
+            grafico.draw(tabela, opcoes);
+        }
+        google.charts.setOnLoadCallback(desenhaGrafico)
+
+    </script>
+</head>
+
+<body>
+    <div id="graficoBarras"></div>
+</body>
+
+</html>
